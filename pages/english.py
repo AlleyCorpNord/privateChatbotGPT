@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import streamlit as st
+import datetime
 
 from llm_model import create_qa
 
@@ -18,6 +19,7 @@ def main():
         st.chat_message(msg["role"]).write(msg["content"])
 
     if prompt := st.chat_input():
+        start_time = datetime.datetime.now()
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").write(prompt)
 
@@ -31,6 +33,9 @@ def main():
 
         st.session_state.messages.append({"role": "assistant", "content": answer})
         st.chat_message("assistant").write(answer)
+
+        end_time = datetime.datetime.now()
+        print("This query ran for", end_time - start_time, "seconds") # a little performance test
 
 
 if __name__ == "__main__":

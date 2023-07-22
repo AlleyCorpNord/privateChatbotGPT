@@ -76,7 +76,7 @@ The supported extensions are:
 Run the following command to ingest all the data.
 
 ```shell
-python ingest.py
+python3 ingest.py
 ```
 
 Output should look like this:

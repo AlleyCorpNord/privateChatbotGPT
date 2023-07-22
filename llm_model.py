@@ -8,7 +8,7 @@ from langchain.chains import RetrievalQA
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.vectorstores import Chroma
-from langchain.llms import GPT4All, LlamaCpp
+from langchain.llms import GPT4All, LlamaCpp, HuggingFaceHub
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 load_dotenv()
 
@@ -19,6 +19,7 @@ persist_directory = os.environ.get('PERSIST_DIRECTORY')
 model_type = os.environ.get('MODEL_TYPE')
 model_path = os.environ.get('MODEL_PATH')
 model_n_ctx = os.environ.get('MODEL_N_CTX')
+huggingfacehub_api_token = os.environ.get('HUGGING_FACE_API_TOKEN')
 model_n_predict = int(os.environ.get('MODEL_N_PREDICT', 256))
 model_temperature = float(os.environ.get('MODEL_TEMPERATURE', 0.8))
 model_top_p = float(os.environ.get('MODEL_TOP_P', 0.95))
@@ -44,6 +45,11 @@ def create_qa():
             llm = LlamaCpp(temperature=model_temperature, top_p=model_top_p, model_path=model_path, n_ctx=model_n_ctx, n_batch=model_n_batch, n_gpu_layers=model_n_gpu_layers, callbacks=callbacks, verbose=False)
         case "GPT4All":
             llm = GPT4All(temp=model_temperature, top_p=model_top_p, model=model_path, n_ctx=model_n_ctx, backend='gptj', n_batch=model_n_batch, n_predict=model_n_predict, callbacks=callbacks, verbose=False)
+        case "Falcon":
+            repo_id = "tiiuae/falcon-7b-instruct"
+            llm = HuggingFaceHub(huggingfacehub_api_token=huggingfacehub_api_token, 
+                     repo_id=repo_id, 
+                     model_kwargs={"temperature":0.6, "max_new_tokens":2000})
         case _default:
             # raise exception if model_type is not supported
             raise Exception(f"Model type {model_type} is not supported. Please choose one of the following: LlamaCpp, GPT4All")
