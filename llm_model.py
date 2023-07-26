@@ -47,7 +47,6 @@ def create_qa():
         case "GPT4All":
             llm = GPT4All(temp=model_temperature, top_p=model_top_p, model=model_path, n_ctx=model_n_ctx, backend='gptj', n_batch=model_n_batch, n_predict=model_n_predict, callbacks=callbacks, verbose=False)
         case "CTransformers":
-            print("CTransformers")
             ctransformers_config = {'max_new_tokens': 2000, 'batch_size': model_n_batch, 'context_length': int(model_n_ctx)}
             llm = CTransformers(model=model_path, model_type=ctransformers_model_type, config=ctransformers_config)
         case _default:
