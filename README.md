@@ -24,6 +24,8 @@ Then, download the LLM model and place it in a directory of your choice:
 
 - LLM: in this project default to [wizard-falcon-7b.ggmlv3.q8_0](https://huggingface.co/TheBloke/WizardLM-Uncensored-Falcon-7B-GGML/blob/55fa1b6a4540924ecc4e72944e9ec4f8fb011f71/wizard-falcon-7b.ggmlv3.q8_0.bin). If you prefer a different GPT4All-J compatible model, just download it and reference it in your `.env` file.
 
+`tokenizer.json` file is also required in `models/` folder.
+
 Copy the `example.env` template into `.env`
 
 ```shell
