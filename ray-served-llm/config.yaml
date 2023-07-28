@@ -1,0 +1,19 @@
+# This file was generated using the `serve build` command on Ray v2.5.1.
+proxy_location: EveryNode
+
+http_options:
+  host: 0.0.0.0
+  port: 8000
+
+applications:
+- name: serve_falcon_model
+  route_prefix: /serve_falcon
+  import_path: serve_falcon_model:serve_falcon_model_app
+  runtime_env: {}
+  deployments:
+  - name: ModelServer
+    num_replicas: 1
+    health_check_timeout_s: 300
+    ray_actor_options:
+      num_cpus: 8
+      num_gpus: 1
