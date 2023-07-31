@@ -13,7 +13,6 @@ applications:
   deployments:
   - name: ModelServer
     num_replicas: 1
-    health_check_timeout_s: 300
     ray_actor_options:
       num_cpus: 0.2
-      # num_gpus: 1
+      # num_gpus: 0

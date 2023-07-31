@@ -1,9 +1,10 @@
 import ray
 import torch
 import logging
+import transformers
 
 from starlette.requests import Request
-from transformers import BartTokenizer, BartForConditionalGeneration
+from transformers import AutoTokenizer
 
 LOGGER = logging.getLogger(__name__)
 
@@ -20,12 +21,17 @@ def get_torch_device():
 class ModelServer:
     def __init__(self, model_id: str):
         # Load model
-        device = get_torch_device()
-        print(model_id)
-        print(device)
         self.model_id = model_id
-        self.model = BartForConditionalGeneration.from_pretrained(model_id).to(device)
-        self.tokenizer = BartTokenizer.from_pretrained(model_id)
+        tokenizer = AutoTokenizer.from_pretrained(model_id)
+        self.tokenizer=tokenizer
+        self.model = transformers.pipeline(
+            "text-generation",
+            model=model_id,
+            tokenizer=tokenizer,
+            torch_dtype=torch.bfloat16, # this will probably won't work for M1, use torch.float16 instead
+            trust_remote_code=True,
+            device_map= get_torch_device(), # "auto" may be used as well
+        ) 
 
 
     def generate_text(self, input_text):
