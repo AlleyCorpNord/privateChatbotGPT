@@ -1,4 +1,4 @@
-ray [serve] ==2.6.1
+ray[serve]==2.6.1
 torch==2.0.1
 transformers==4.31.0
 pydantic==1.10.11

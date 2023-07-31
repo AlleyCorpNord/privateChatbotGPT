@@ -1,6 +1,6 @@
 # Guide to test usage of Ray to serve models
 
-This guide will describe how to deploy using Ray Servethe two models used in the simplified LLM chain with CampFHIR. Those two models are stored in HuggingFace.
+This guide will describe how to deploy using Ray Serve the model used in the simplified LLM chain.
 
 ## Install the Python requirements
 Create a virtual environment that will be used to log the model into mlflow:
@@ -12,6 +12,10 @@ Activate that virtual environment and install the requirements:
 ```shell
 source .rayenv/bin/activate
 pip install -r requirements.txt
+```
+Note it is important to make sure that ray version in if fact 2.6.1, as it contains an important patch. To check the version of ray, do:
+```shell
+ray --version
 ```
 
 ## Start Ray cluster
