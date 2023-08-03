@@ -1,8 +1,8 @@
-langchain==0.0.197
+langchain==0.0.245
 gpt4all==0.3.4
 chromadb==0.3.23
 llama-cpp-python==0.1.50
-urllib3==2.0.2
+urllib3<=2.0.2
 PyMuPDF==1.22.3
 python-dotenv==1.0.0
 unstructured==0.6.6
@@ -13,3 +13,5 @@ pypandoc==1.11
 tqdm==4.65.0
 streamlit>=1.24.0
 st-pages==0.4.1
+llama-index==0.7.13
+ctransformers==0.2.14

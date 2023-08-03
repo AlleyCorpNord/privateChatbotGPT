@@ -62,8 +62,9 @@ service_context = ServiceContext.from_defaults(llm=llm, embed_model=embed_model)
 # build index
 index = ListIndex.from_documents(documents, service_context=service_context)
 
-# # get response from query
+# get response from query
 # query = "When is payroll?"
 # query_engine = index.as_query_engine()
+# print("QUERY ENGINE IS!!!", query_engine)
 # response = query_engine.query(query)
 # print(f"RESPONSE: {response}")
