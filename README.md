@@ -22,7 +22,9 @@ CMAKE_ARGS="-DLLAMA_METAL=on" FORCE_CMAKE=1 pip install --upgrade --force-reinst
 
 Then, download the LLM model and place it in a directory of your choice:
 
-- LLM: default to [ggml-gpt4all-j-v1.3-groovy.bin](https://gpt4all.io/models/ggml-gpt4all-j-v1.3-groovy.bin). If you prefer a different GPT4All-J compatible model, just download it and reference it in your `.env` file.
+- LLM: in this project default to [wizard-falcon-7b.ggmlv3.q8_0](https://huggingface.co/TheBloke/WizardLM-Uncensored-Falcon-7B-GGML/blob/55fa1b6a4540924ecc4e72944e9ec4f8fb011f71/wizard-falcon-7b.ggmlv3.q8_0.bin). If you prefer a different GPT4All-J compatible model, just download it and reference it in your `.env` file.
+
+`tokenizer.json` file is also required in `models/` folder.
 
 Copy the `example.env` template into `.env`
 
@@ -76,7 +78,7 @@ The supported extensions are:
 Run the following command to ingest all the data.
 
 ```shell
-python ingest.py
+python3 ingest.py
 ```
 
 Output should look like this:

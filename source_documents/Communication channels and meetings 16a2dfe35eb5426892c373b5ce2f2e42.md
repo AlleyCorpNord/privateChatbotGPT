@@ -10,18 +10,24 @@ Everyone is encouraged to use Do Not Disturb as well as status to best manage th
 
 ## #announcements
 
-The #announcements channel is locked, and only managers and HR can post to it.
+This channel is for workspace-wide communication and announcements. All members are in this channel.
+
+**The #announcements channel is locked, and only managers and HR can post to it.**
 
 Please enable notifications for #announcements to receive an alert for important company updates.
 
 ## #general
 
-Anyone can post on general, but remember to keep it work-related.
+Anyone can post in general, but remember to keep it work-related.
 
 Good topics for #general:
 
 - "Does anyone know where I can find a policy for ___?"
 - "I created a new channel for ___, join if you want!"
+
+## #appreciation-corner
+
+Warm & fuzzy things, and also a feed from 15five.
 
 ## Other channels
 
@@ -31,7 +37,7 @@ This channel has posts about educational books, conferences, etc.
 
 ## #random
 
-Anyone can post on this channel. 
+A place for work-related flimflam, faffing, hodge-podge or jibber-jabber you’d prefer to keep out of more work focused related channels. Anyone can post in this channel. 
 
 Donut will ask watercooler topic questions here like: 
 
@@ -44,11 +50,27 @@ This channel is for planning social events.
 
 ## #weather
 
-The channel where we discuss all things weather.
+The channel where we discuss all things related to the weather.
 
 ## #our-furry-furiends
 
-The channel where we post all things related to our pets.
+The channel where we post all things related to our pets and animals.
+
+## #jukebox
+
+What are you listening to? Share the songs with the team.
+
+## #health-and-fitness
+
+#board-games
+
+We play games or chat! Optional.
+
+## #pipeline-updates
+
+#ai-hackathon
+
+#devs
 
 # Email
 
@@ -90,16 +112,6 @@ Some guidelines:
 - Supporting documents
 
 Tuesday tea time supersedes lunch & learns in pandemic work-from-home times. 
-
-**Every week**, one or more team members present something — from a lightning talk (<10 min) to a full presentation to a project demo. 
-
-Members of the "extended" community are invited, e.g. engineers and designers from some of the companies we work with.
-
-Some guidelines:
-
-- Focus on education, but CHILL. You don't need to spend a lot of time preparing.
-- Rolling list of topics with some kind of lightweight signup/agenda
-- Supporting documents
 
 ## Friday Happy Hour
 

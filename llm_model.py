@@ -8,8 +8,9 @@ from langchain.chains import RetrievalQA
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.vectorstores import Chroma
-from langchain.llms import GPT4All, LlamaCpp
+from langchain.llms import GPT4All, LlamaCpp, CTransformers
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+
 load_dotenv()
 
 
@@ -26,6 +27,7 @@ model_n_batch = int(os.environ.get('MODEL_N_BATCH',8))
 model_n_gpu_layers = os.environ.get('MODEL_N_GPU_LAYERS', None)
 model_n_gpu_layers = None if model_n_gpu_layers is None else int(model_n_gpu_layers)
 target_source_chunks = int(os.environ.get('TARGET_SOURCE_CHUNKS',4))
+ctransformers_model_type = os.environ.get('CTRANSFORMERS_MODEL_TYPE')
 
 from constants import CHROMA_SETTINGS
 
@@ -41,9 +43,12 @@ def create_qa():
     # Prepare the LLM
     match model_type:
         case "LlamaCpp":
-            llm = LlamaCpp(temperature=model_temperature, top_p=model_top_p, model_path=model_path, n_ctx=model_n_ctx, n_batch=model_n_batch, n_gpu_layers=model_n_gpu_layers, callbacks=callbacks, verbose=False)
+             llm = LlamaCpp(temperature=model_temperature, top_p=model_top_p, model_path=model_path, n_ctx=model_n_ctx, n_batch=model_n_batch, n_gpu_layers=model_n_gpu_layers, callbacks=callbacks, verbose=False)
         case "GPT4All":
             llm = GPT4All(temp=model_temperature, top_p=model_top_p, model=model_path, n_ctx=model_n_ctx, backend='gptj', n_batch=model_n_batch, n_predict=model_n_predict, callbacks=callbacks, verbose=False)
+        case "CTransformers":
+            ctransformers_config = {'max_new_tokens': 2000, 'batch_size': model_n_batch, 'context_length': int(model_n_ctx)}
+            llm = CTransformers(model=model_path, model_type=ctransformers_model_type, config=ctransformers_config)
         case _default:
             # raise exception if model_type is not supported
             raise Exception(f"Model type {model_type} is not supported. Please choose one of the following: LlamaCpp, GPT4All")
